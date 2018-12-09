@@ -1,7 +1,7 @@
 # LavaMap-Assignment
 Full Stack Developer
 
-Single Page Application using MongoDB, ExpressJS, AngularJS, and NodeJS (MEAN stack).
+Single Page Application using [MongoDB](https://www.mongodb.com/), [ExpressJS](https://expressjs.com/), [AngularJS](https://angularjs.org/), and [NodeJS](https://nodejs.org/en/) (MEAN stack).
 
 ### Installation
 ****
