@@ -107,7 +107,7 @@ module.exports = function (router) {
             if (req.files) {
                 uploadedFilePaths = [];
                 for (var i = 0; i < req.files.length; i++) {
-                    uploadedFilePaths.push(req.files[i].path.replace('public\\uploads\\', 'uploads\\'));
+                    uploadedFilePaths.push(req.files[i].path.replace('public\\uploads\\', 'uploads\\').replace('public/uploads/', 'uploads/'));
                 }
             }
 

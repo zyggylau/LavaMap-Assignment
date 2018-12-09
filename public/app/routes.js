@@ -43,7 +43,7 @@ app.run(['$rootScope', '$location', 'Auth', function ($rootScope, $location, Aut
     $rootScope.$on('$routeChangeStart', function (event, next, current) {
 
         //redirect non logged in visitors
-        if (next.$$route.adminOnly && !Auth.isLoggedIn()) {
+        if (next.$$route && next.$$route.adminOnly && !Auth.isLoggedIn()) {
             event.preventDefault();
             $location.path('/');
         }
