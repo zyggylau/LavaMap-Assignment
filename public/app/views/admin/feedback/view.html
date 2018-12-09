@@ -1,0 +1,70 @@
+<section class="content-header">
+    <h1>
+        View Feedback
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="/admin">Feedbacks</a></li>
+        <li class="active">View</li>
+    </ol>
+</section>
+<section class="content feedback">
+    <div class="box box-default">
+        <div class="box-body">
+            <div ng-show="!feedback && !loading">
+                Feedback not found
+            </div>
+            <div ng-show="feedback">
+                <ul class="list-group list-group-unbordered">
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <b>Email:</b>
+                            </div>
+                            <div class="col-sm-8">
+                                {{feedback.email}}
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <b>Feedback:</b>
+                            </div>
+                            <div class="col-sm-8" class="feedback-content">
+                                {{feedback.content}}
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <b>Submission Date:</b>
+                            </div>
+                            <div class="col-sm-8">
+                                {{feedback.submissionDate | date:'yyyy-MM-dd H:mm:ss'}}
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <b>Submitted Images:</b>
+                            </div>
+                            <div class="col-sm-8">
+                                <div ng-show="feedback.uploadedFilePaths">
+                                    <div ng-repeat="path in feedback.uploadedFilePaths">
+                                        <div style="max-width: 300px;">
+                                            <a target="_blank" ng-href="{{path}}" style="display: inline-block">
+                                                <img class="img-responsive" ng-src="{{path}}">
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>

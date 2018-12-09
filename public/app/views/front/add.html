@@ -1,0 +1,73 @@
+<section class="content-header">
+    <h1>
+        Feedback
+    </h1>
+</section>
+<section class="content">
+
+    <div class="show-hide message" ng-show="successMsg">
+        <div class="alert alert-success">{{ successMsg }}</div>
+    </div>
+
+    <div class="show-hide message" ng-show="errorMsg || (form.$submitted && !form.$valid)">
+        <div class="alert alert-danger">
+            {{ errorMsg }}
+            <div ng-show="form.$submitted" ng-repeat="requiredError in form.$error.required">
+                {{requiredError.$name}} is required.
+            </div>
+        </div>
+    </div>
+
+    <div class="box box-default">
+        <!--<div class="box-header with-border">-->
+        <!--<h3 class="box-title">Home</h3>-->
+        <!--</div>-->
+        <form ng-submit="formSubmit();" class="form-horizontal" name="form">
+            <div class="box-body">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="email">Email</label>
+                    <div class="col-sm-10">
+                        <input type="email" id="email" name="email" class="form-control" ng-model="formData.email"
+                               ng-required="true">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="content">Content</label>
+                    <div class="col-sm-10">
+                        <textarea id="content" name="content" class="form-control" ng-model="formData.content" rows="4" ng-required="true"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="images">Images</label>
+                    <div class="col-sm-10">
+                        <input type="file" class="btn btn-default" name="images" id="images"
+                               file-model="formData.images"
+                               style="width: 100%" accept="image/*"
+                               multiple
+                        />
+                        <div ng-show='formData.images' ng-repeat='image in formData.images'>
+                            <div class="row">
+                                <div class="col-xs-4 col-sm-2">
+                                    <img style="max-height: 50px;" class="img-responsive" src="{{image.viewUrl}}"
+                                         alt="">
+                                </div>
+                                <div class="col-xs-8 col-sm-10" style="overflow: hidden;text-overflow: ellipsis;">
+                                    {{image.name}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="box-footer">
+                <button type="submit" class="btn btn-primary">Submit</button>
+
+                <span ng-show="loading">
+                    <span class="glyphicon glyphicon-repeat spin"></span>
+                    <span>Loading...</span>
+                </span>
+            </div>
+        </form>
+    </div>
+</section>

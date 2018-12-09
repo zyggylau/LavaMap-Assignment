@@ -1,0 +1,72 @@
+<section class="content-header">
+    <h1>
+        Submitted Feedbacks
+    </h1>
+    <ol class="breadcrumb">
+        <li class="active">Feedbacks</li>
+    </ol>
+</section>
+<section class="content feedback">
+    <div class="box box-default hidden-xs">
+        <div class="box-body no-padding">
+            <table class="table table-hover">
+                <tbody>
+                <tr>
+                    <th>Email</th>
+                    <th>Feedback</th>
+                    <th>Submission Date</th>
+                    <th></th>
+                </tr>
+                <tr ng-repeat="feedback in feedbacks | orderBy: 'date':true">
+                    <td>{{feedback.email}}</td>
+                    <td class="feedback-content">{{feedback.content.substring(0, 140)}}</td>
+                    <td>{{feedback.submissionDate | date:'yyyy-MM-dd H:mm:ss'}}</td>
+                    <td><a ng-href="admin/{{feedback._id}}" class="btn btn-info">View</a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- should use some library for mobile instead -->
+    <div class="visible-xs">
+        <div class="box box-default" ng-repeat="feedback in feedbacks | orderBy: 'date':true">
+            <div class="box-body">
+                <ul class="list-group list-group-unbordered">
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <b>Email:</b>
+                            </div>
+                            <div class="col-sm-8">
+                                {{feedback.email}}
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <b>Feedback:</b>
+                            </div>
+                            <div class="col-sm-8" class="feedback-content">
+                                {{feedback.content}}
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <b>Submission Date:</b>
+                            </div>
+                            <div class="col-sm-8">
+                                {{feedback.submissionDate | date:'yyyy-MM-dd H:mm:ss'}}
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <a ng-href="admin/{{feedback._id}}" class="btn btn-info" style="width: 100%">View</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>

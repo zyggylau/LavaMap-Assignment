@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <base href="/">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>LavaMap Assignment</title>
+    <meta name="author" content="Zyggy Lau">
+    <meta name="description" content="LavaMap Assignment">
+    <meta name="keywords" content="">
+    <link rel="shortcut icon" href="favicon.ico" type="image/vnd.microsoft.icon">
+
+
+    <link rel="stylesheet" href="/vendor/Animate.css/animate.css">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="/vendor/AdminLTE/css/skins/_all-skins.min.css">
+    <link rel="stylesheet" href="/vendor/AdminLTE/css/AdminLTE.min.css">
+    <script src="/vendor/AdminLTE/js/adminlte.min.js"></script>
+
+    <script src="/vendor/angular/angular.js"></script>
+    <script src="/vendor/angular/angular-animate.js"></script>
+    <script src="/vendor/angular/angular-route.js"></script>
+
+
+    <link rel="stylesheet" href="/assets/css/style.css">
+
+    <script src="/app/app.js"></script>
+    <script src="/app/routes.js"></script>
+    <script src="/app/controllers/mainController.js"></script>
+    <script src="/app/controllers/frontController.js"></script>
+    <script src="/app/controllers/admin/feedbacksController.js"></script>
+    <script src="/app/controllers/admin/feedbackViewController.js"></script>
+    <script src="/app/services/userFeedbackServices.js"></script>
+    <script src="/app/services/authServices.js"></script>
+    <script src="/app/directives/fileModel.js"></script>
+
+</head>
+<body ng-app="userApp" ng-controller="mainController as main" ng-show="main.showContent" ng-cloak class="skin-blue layout-top-nav">
+<header class="main-header">
+    <nav class="navbar navbar-static-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a href="/" class="navbar-brand">LavaMap Assignment</a>
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+                    <i class="glyphicon glyphicon-menu-hamburger"></i>
+                </button>
+            </div>
+
+            <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li ng-class="{'active': main.isActiveRoute('/add')}"><a href="/add">Send Feedback</a></li>
+
+                    <li ng-class="{'active': main.isActiveRoute('/admin')}"><a href="/admin" ng-show="main.loggedUser">View Feedbacks</a></li>
+
+                    <li ng-class="{'active': main.isActiveRoute('/login')}"><a href="/login" ng-show="!main.loggedUser">Login</a></li>
+
+                    <li><a href="#" ng-click="main.logout();" ng-show="main.loggedUser">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+</header>
+<div class="content-wrapper">
+    <div class="container">
+        <small class="pull-right" ng-show="main.loggedUser">Signed in as {{main.loggedUser.username}}</small>
+        <div ng-view></div>
+    </div>
+</div>
+<script>
+    $(document).on('click','.navbar-nav a', function () {
+        //hide navbar for mobile on click
+        var toggleButton = $('.navbar-toggle');
+        if (toggleButton.attr('aria-expanded')) {
+            toggleButton.trigger('click');
+        }
+    });
+</script>
+</body>
+</html>
