@@ -22,6 +22,14 @@ var mongoose = require('mongoose');
 var mongodbPort = 27017; //<-- change to your MongoDB port number
 ```
 
+****
+
+If deployed successfully, a default admin user would be created
+```sh
+Running on port 8080
+Connected to MongoDB
+Created default admin user (username: "admin", password: "admin")
+```
 
 ****
 
