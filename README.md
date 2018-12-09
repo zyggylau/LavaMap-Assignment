@@ -12,8 +12,8 @@ Install the dependencies and start the server :
 $ npm install
 $ npm run start 
 ```
-and it should start at `http://localhost:8080`
-
+and it should start at `http://localhost:8080`.
+-------------
 If it won't start, check the port number of your MongoDB server and change the mongoDB port number in `./mongodb.js`. Default should be `27017`.
 
 ```sh 
